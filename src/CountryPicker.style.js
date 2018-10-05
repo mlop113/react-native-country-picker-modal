@@ -4,14 +4,14 @@ import { getHeightPercent } from './ratio'
 export default StyleSheet.create({
   container: {},
   modalContainer: {
-    backgroundColor: 'white',
+    backgroundColor: '#001f33',
     flex: 1
   },
   contentContainer: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: 'white'
+    backgroundColor: '#001f33'
   },
   header: {
     flexDirection: 'row',
@@ -19,7 +19,8 @@ export default StyleSheet.create({
   },
   input: {
     height: 48,
-    width: '70%'
+    width: '70%',
+    color:'white'
   },
   inputOnly: {
     marginLeft: '15%'
@@ -67,7 +68,8 @@ export default StyleSheet.create({
     height: 20
   },
   countryName: {
-    fontSize: getHeightPercent(2.2)
+    fontSize: getHeightPercent(2.2),
+    color:'white'
   },
   scrollView: {
     flex: 1
@@ -76,17 +78,20 @@ export default StyleSheet.create({
     marginRight: 10,
     backgroundColor: 'transparent',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    color:'white'
   },
   letter: {
     height: 25,
     width: 20,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    color:'white'
   },
   letterText: {
     textAlign: 'center',
-    fontSize: getHeightPercent(2.2)
+    fontSize: getHeightPercent(2.2),
+    color:'white'
   },
   closeButton: {
     height: 48,
@@ -97,6 +102,7 @@ export default StyleSheet.create({
   closeButtonImage: {
     height: 24,
     width: 24,
-    resizeMode: 'contain'
+    resizeMode: 'contain',
+    tintColor:'#00afed'
   }
 })
