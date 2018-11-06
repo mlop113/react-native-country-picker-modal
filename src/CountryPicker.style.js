@@ -33,8 +33,8 @@ export default StyleSheet.create({
   },
   imgStyle: {
     resizeMode: 'contain',
-    width: 25,
-    height: 19,
+    width: 20,
+    height: 20,
     borderWidth: 1 / PixelRatio.get(),
     borderColor: 'transparent',
     opacity: 0.8,
