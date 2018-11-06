@@ -82,14 +82,14 @@ export default StyleSheet.create({
     backgroundColor: 'transparent',
     justifyContent: 'center',
     alignItems: 'center',
-    color: 'white',
+  
   },
   letter: {
     height: 25,
     width: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    color: 'white',
+   
   },
   letterText: {
     textAlign: 'center',
