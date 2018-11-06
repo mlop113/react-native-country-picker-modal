@@ -107,14 +107,33 @@ export default class CountryPicker extends Component {
 
   static renderImageFlag(cca2, imageStyle) {
     return cca2 !== '' ? (
+           <Image
+        style={[styles.imgStyle, imageStyle]}
+        source={{ uri: countries[cca2].flag }}
+      />
+    ) : null
+  }
+
+  static renderImageFlag2(cca2, imageStyle) {
+    return cca2 !== '' ? (
       <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center', height:30, width: 35}}>
            <Image
         style={[styles.imgStyle, imageStyle]}
         source={{ uri: countries[cca2].flag }}
       />
-      <Image source={{uri:countries[down].flag }} style={{height:5, width:10, paddingLeft:5}}/>
+      <Image source={{uri: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAGCAYAAAAVMmT4AAAAAXNSR0IArs4c6QAAAHNJREFUGBljYICABUCKGcpGp1iAAptgguxAxjMg3g3EQjBBKC0CpM8C8TUgBmkCg0Yg+QiILwKxLliEgcEMSN8D4nNAnAQVg1PuQNYVIL4PxGVADLINpNkciLECRaDoMSD+AsQg6yWBGC/gAsruAGI2dFUAhdwRW6KgkUcAAAAASUVORK5CYII="}} style={{height:5, width:10, paddingLeft:5}}/>
        </View>
     ) : null
+  }
+
+  static renderFlag2(cca2, itemStyle, emojiStyle, imageStyle) {
+    return (
+      <View style={[styles.itemCountryFlag, itemStyle]}>
+        {isEmojiable
+          ? CountryPicker.renderEmojiFlag(cca2, emojiStyle)
+          : CountryPicker.renderImageFlag2(cca2, imageStyle)}
+      </View>
+    )
   }
 
   static renderFlag(cca2, itemStyle, emojiStyle, imageStyle) {
@@ -272,6 +291,7 @@ export default class CountryPicker extends Component {
       return
     }
     let position = index * this.itemHeight
+
     // do not scroll past the end of the list
     if (position + this.visibleListHeight > this.listHeight) {
       position = this.listHeight - this.visibleListHeight
@@ -331,9 +351,10 @@ export default class CountryPicker extends Component {
         <View style={styles.itemCountryName}>
           <Text style={styles.countryName} allowFontScaling={false}>
             {this.getCountryName(country)}
-            </Text>
-
-          <Text style={styles.countryName}>{` (+${country.callingCode})`}</Text>
+            {this.props.showCallingCode &&
+            country.callingCode &&
+            <Text>{` (+${country.callingCode})`}</Text>}
+          </Text>
         </View>
       </View>
     )
@@ -358,7 +379,7 @@ export default class CountryPicker extends Component {
         autoFocus={autoFocusFilter}
         autoCorrect={false}
         placeholder={filterPlaceholder}
-        placeholderTextColor='white'
+        placeholderTextColor={filterPlaceholderTextColor}
         style={[styles.input, !this.props.closeable && styles.inputOnly]}
         onChangeText={onChange}
         value={value}
@@ -380,7 +401,7 @@ export default class CountryPicker extends Component {
             <View
               style={[styles.touchFlag, { marginTop: isEmojiable ? 0 : 5 }]}
             >
-              {CountryPicker.renderFlag(this.props.cca2)}
+              {CountryPicker.renderFlag2(this.props.cca2)}
             </View>
           )}
         </TouchableOpacity>
@@ -410,7 +431,7 @@ export default class CountryPicker extends Component {
                   dataSource={this.state.dataSource}
                   renderRow={country => this.renderCountry(country)}
                   initialListSize={30}
-                  pageSize={500}
+                  pageSize={15}
                   onLayout={({ nativeEvent: { layout: { y: offset } } }) =>
                     this.setVisibleListHeight(offset)
                   }
