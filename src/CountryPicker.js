@@ -107,10 +107,13 @@ export default class CountryPicker extends Component {
 
   static renderImageFlag(cca2, imageStyle) {
     return cca2 !== '' ? (
-      <Image
+      <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center', height:30, width: 35}}>
+           <Image
         style={[styles.imgStyle, imageStyle]}
         source={{ uri: countries[cca2].flag }}
       />
+      <Image source={{uri:countries[down].flag }} style={{height:5, width:10, paddingLeft:5}}/>
+       </View>
     ) : null
   }
 
