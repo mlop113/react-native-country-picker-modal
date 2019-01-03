@@ -4,18 +4,20 @@ import { getHeightPercent } from './ratio'
 export default StyleSheet.create({
   container: {},
   modalContainer: {
-    backgroundColor: '#001f33',
+ //   backgroundColor: '#001f33',
     flex: 1,
   },
   contentContainer: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#001f33',
+  //  backgroundColor: '#001f33',
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
+    borderBottomWidth: 0.5,
+    marginBottom: 7
   },
   input: {
     height: 48,
@@ -27,7 +29,8 @@ export default StyleSheet.create({
   },
   touchFlag: {
     alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     height: 19,
     backgroundColor: 'transparent',
   },
@@ -58,21 +61,23 @@ export default StyleSheet.create({
   itemCountryFlag: {
     justifyContent: 'center',
     alignItems: 'center',
-    height: '7%',
+    height: '5%',
     width: '15%',
+    paddingBottom: 7
   },
   itemCountryName: {
-    justifyContent: 'space-between',
+   // justifyContent: 'space-between',
     flexDirection:'row',
-    paddingHorizontal:10,
-    width: '70%',
+    marginHorizontal:10,
+    width: '90%',
     borderBottomWidth: 2 / PixelRatio.get(),
     borderBottomColor: '#ccc',
     height: 20,
   },
   countryName: {
-    fontSize: getHeightPercent(2.2),
-    color: 'white',
+    fontSize: getHeightPercent(2.5),
+    color: 'black',
+    marginLeft: 10
   },
   scrollView: {
     flex: 1,
@@ -94,7 +99,7 @@ export default StyleSheet.create({
   letterText: {
     textAlign: 'center',
     fontSize: getHeightPercent(2.2),
-    color: 'white',
+  //  color: 'white',
   },
   closeButton: {
     height: 48,
@@ -106,6 +111,11 @@ export default StyleSheet.create({
     height: 24,
     width: 24,
     resizeMode: 'contain',
-    tintColor: '#00afed',
+    tintColor: 'black',
   },
+  title: {
+    fontSize: getHeightPercent(3.7),
+    color: 'black',
+    fontWeight: 'bold'
+  }
 })
