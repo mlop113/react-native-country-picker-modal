@@ -347,8 +347,8 @@ export default class CountryPicker extends Component {
     const country = countries[cca2]
     return (
       <View style={styles.itemCountry}>
-        {CountryPicker.renderFlag(cca2)}
         <View style={styles.itemCountryName}>
+          {CountryPicker.renderFlag(cca2)}
           <Text style={styles.countryName} allowFontScaling={false}>
             {this.getCountryName(country)}
             {this.props.showCallingCode &&
@@ -402,6 +402,7 @@ export default class CountryPicker extends Component {
               style={[styles.touchFlag, { marginTop: isEmojiable ? 0 : 5 }]}
             >
               {CountryPicker.renderFlag2(this.props.cca2)}
+              <Image source={this.props.arrow_right} style={{height: 12, width: 12}}/>
             </View>
           )}
         </TouchableOpacity>
@@ -420,7 +421,7 @@ export default class CountryPicker extends Component {
                   onPress={() => this.onClose()}
                 />
               )}
-              {this.props.filterable && this.renderFilter()}
+                <Text style={styles.title}>{this.props.title}</Text>
             </View>
             <KeyboardAvoidingView behavior="padding">
               <View style={styles.contentContainer}>
@@ -436,17 +437,17 @@ export default class CountryPicker extends Component {
                     this.setVisibleListHeight(offset)
                   }
                 />
-                {!this.props.hideAlphabetFilter && (
-                  <ScrollView
-                    contentContainerStyle={styles.letters}
-                    keyboardShouldPersistTaps="always"
-                  >
-                    {this.state.filter === '' &&
-                      this.state.letters.map((letter, index) =>
-                        this.renderLetters(letter, index)
-                      )}
-                  </ScrollView>
-                )}
+                {/*{!this.props.hideAlphabetFilter && (*/}
+                  {/*<ScrollView*/}
+                    {/*contentContainerStyle={styles.letters}*/}
+                    {/*keyboardShouldPersistTaps="always"*/}
+                  {/*>*/}
+                    {/*{this.state.filter === '' &&*/}
+                      {/*this.state.letters.map((letter, index) =>*/}
+                        {/*this.renderLetters(letter, index)*/}
+                      {/*)}*/}
+                  {/*</ScrollView>*/}
+                {/*)}*/}
               </View>
             </KeyboardAvoidingView>
           </SafeAreaView>
