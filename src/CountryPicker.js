@@ -116,12 +116,11 @@ export default class CountryPicker extends Component {
 
   static renderImageFlag2(cca2, imageStyle) {
     return cca2 !== '' ? (
-      <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center', height:30, width: 35}}>
+      <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center', height:27, width: 35}}>
            <Image
         style={[styles.imgStyle, imageStyle]}
         source={{ uri: countries[cca2].flag }}
       />
-      <Image source={{uri: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAGCAYAAAAVMmT4AAAAAXNSR0IArs4c6QAAAHNJREFUGBljYICABUCKGcpGp1iAAptgguxAxjMg3g3EQjBBKC0CpM8C8TUgBmkCg0Yg+QiILwKxLliEgcEMSN8D4nNAnAQVg1PuQNYVIL4PxGVADLINpNkciLECRaDoMSD+AsQg6yWBGC/gAsruAGI2dFUAhdwRW6KgkUcAAAAASUVORK5CYII="}} style={{height:5, width:10, paddingLeft:5}}/>
        </View>
     ) : null
   }
@@ -347,7 +346,6 @@ export default class CountryPicker extends Component {
     const country = countries[cca2]
     return (
       <View style={styles.itemCountry}>
-        <View style={styles.itemCountryName}>
           {CountryPicker.renderFlag(cca2)}
           <Text style={styles.countryName} allowFontScaling={false}>
             {this.getCountryName(country)}
@@ -355,7 +353,6 @@ export default class CountryPicker extends Component {
             country.callingCode &&
             <Text>{` (+${country.callingCode})`}</Text>}
           </Text>
-        </View>
       </View>
     )
   }
@@ -399,10 +396,11 @@ export default class CountryPicker extends Component {
             this.props.children
           ) : (
             <View
-              style={[styles.touchFlag, { marginTop: isEmojiable ? 0 : 5 }]}
+              style={styles.touchFlag}
             >
+              <Text style={this.props.labelStyle}>{this.props.label}</Text>
               {CountryPicker.renderFlag2(this.props.cca2)}
-              <Image source={this.props.arrow_right} style={{height: 12, width: 12}}/>
+              <Image source={this.props.arrow_right} style={{height: 12, width: 12, marginLeft: 7, marginTop: 10}}/>
             </View>
           )}
         </TouchableOpacity>
