@@ -2,7 +2,9 @@ import { StyleSheet, PixelRatio } from 'react-native'
 import { getHeightPercent } from './ratio'
 
 export default StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+  },
   modalContainer: {
  //   backgroundColor: '#001f33',
     flex: 1,
@@ -28,18 +30,17 @@ export default StyleSheet.create({
     marginLeft: '15%',
   },
   touchFlag: {
-    alignItems: 'center',
+  //  alignItems: 'center',
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    height: 19,
+    justifyContent: 'center',
     backgroundColor: 'transparent',
   },
   imgStyle: {
     resizeMode: 'contain',
-    width: 20,
+    width: 27,
     height: 20,
-    borderWidth: 1 / PixelRatio.get(),
-    borderColor: 'transparent',
+    borderWidth: 2 / PixelRatio.get(),
+    borderColor: 'black',
     opacity: 0.8,
   },
   emojiFlag: {
@@ -55,29 +56,28 @@ export default StyleSheet.create({
   itemCountry: {
     flexDirection: 'row',
     height: getHeightPercent(7),
-    justifyContent: 'flex-start',
+    width: '90%',
+    marginHorizontal: 20,
+    // justifyContent: 'center',
     alignItems: 'center',
-  },
-  itemCountryFlag: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '5%',
-    width: '15%',
-    paddingBottom: 7
+    borderBottomWidth: 1 / PixelRatio.get(),
+    borderColor: 'black',
+    paddingBottom: 4
   },
   itemCountryName: {
-   // justifyContent: 'space-between',
     flexDirection:'row',
-    marginHorizontal:10,
+    marginHorizontal: 20,
+    alignItems: 'center',
     width: '90%',
-    borderBottomWidth: 2 / PixelRatio.get(),
+    borderBottomWidth: 1 / PixelRatio.get(),
     borderBottomColor: '#ccc',
     height: 20,
   },
   countryName: {
     fontSize: getHeightPercent(2.5),
     color: 'black',
-    marginLeft: 10
+    fontWeight: '700',
+    marginLeft: 15
   },
   scrollView: {
     flex: 1,
