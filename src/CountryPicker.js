@@ -67,6 +67,7 @@ export default class CountryPicker extends Component {
     closeable: PropTypes.bool,
     filterable: PropTypes.bool,
     children: PropTypes.node,
+    isCode: PropTypes.bool,
     countryList: PropTypes.array,
     excludeCountries: PropTypes.array,
     styles: PropTypes.object,
@@ -88,6 +89,7 @@ export default class CountryPicker extends Component {
   static defaultProps = {
     translation: 'eng',
     countryList: cca2List,
+    isCode: false,
     excludeCountries: [],
     filterPlaceholder: 'Filter',
     autoFocusFilter: true,
@@ -96,10 +98,11 @@ export default class CountryPicker extends Component {
   }
 
   static renderEmojiFlag(cca2, emojiStyle) {
+    const country = countries[cca2]
     return (
       <Text style={[styles.emojiFlag, emojiStyle]} allowFontScaling={false}>
         {cca2 !== '' && countries[cca2.toUpperCase()] ? (
-          <Emoji name={countries[cca2.toUpperCase()].flag} />
+            <Emoji name={countries[cca2.toUpperCase()].flag} />
         ) : null}
       </Text>
     )
@@ -126,11 +129,13 @@ export default class CountryPicker extends Component {
   }
 
   static renderFlag2(cca2, itemStyle, emojiStyle, imageStyle) {
+    const country = countries[cca2]
     return (
       <View style={[styles.itemCountryFlag, itemStyle]}>
         {isEmojiable
           ? CountryPicker.renderEmojiFlag(cca2, emojiStyle)
           : CountryPicker.renderImageFlag2(cca2, imageStyle)}
+       <Text style={{fontSize: 16, paddingHorizontal: 3, fontWeight: 'bold'}}>{` +${country.callingCode}`}</Text>
       </View>
     )
   }
