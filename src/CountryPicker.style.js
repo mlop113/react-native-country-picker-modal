@@ -3,7 +3,7 @@ import { getHeightPercent } from './ratio'
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   modalContainer: {
  //   backgroundColor: '#001f33',
@@ -52,6 +52,7 @@ export default StyleSheet.create({
     borderWidth: 1 / PixelRatio.get(),
     borderColor: 'transparent',
     backgroundColor: 'transparent',
+    marginBottom: 5
   },
   itemCountry: {
     flexDirection: 'row',
@@ -117,5 +118,10 @@ export default StyleSheet.create({
     fontSize: getHeightPercent(3.7),
     color: 'black',
     fontWeight: 'bold'
+  },
+  itemCountryFlag: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 })
