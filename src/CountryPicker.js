@@ -82,6 +82,7 @@ export default class CountryPicker extends Component {
     flagType: PropTypes.oneOf(Object.values(FLAG_TYPES)),
     hideAlphabetFilter: PropTypes.bool,
     renderFilter: PropTypes.func,
+    showCountryInterfaceCode: PropTypes.bool,
     showCallingCode: PropTypes.bool,
     filterOptions: PropTypes.object
   }
@@ -128,14 +129,16 @@ export default class CountryPicker extends Component {
     ) : null
   }
 
-  static renderFlag2(cca2, itemStyle, emojiStyle, imageStyle) {
+  static renderFlag2(cca2, itemStyle, emojiStyle, imageStyle, showCountryInterfaceCode) {
     const country = countries[cca2]
     return (
       <View style={[styles.itemCountryFlag, itemStyle]}>
         {isEmojiable
           ? CountryPicker.renderEmojiFlag(cca2, emojiStyle)
           : CountryPicker.renderImageFlag2(cca2, imageStyle)}
-       <Text style={{fontSize: 16, paddingHorizontal: 3, fontWeight: 'bold'}}>{` +${country.callingCode}`}</Text>
+        {showCountryInterfaceCode &&
+        country.callingCode &&
+        <Text style={{fontSize: 16, paddingHorizontal: 3, fontWeight: 'bold'}}>{`+${country.callingCode}`}</Text>}
       </View>
     )
   }
@@ -352,12 +355,12 @@ export default class CountryPicker extends Component {
     return (
       <View style={styles.itemCountry}>
           {CountryPicker.renderFlag(cca2)}
-          <Text style={styles.countryName} allowFontScaling={false}>
+          <Text style={[styles.countryName, {flex: 1}]} allowFontScaling={false}>
             {this.getCountryName(country)}
-            {this.props.showCallingCode &&
-            country.callingCode &&
-            <Text>{` (+${country.callingCode})`}</Text>}
           </Text>
+        {this.props.showCallingCode &&
+        country.callingCode &&
+        <Text style={{fontSize: 16, paddingHorizontal: 3, fontWeight: 'bold'}}>{`+${country.callingCode}`}</Text>}
       </View>
     )
   }
@@ -404,7 +407,7 @@ export default class CountryPicker extends Component {
               style={styles.touchFlag}
             >
               <Text style={this.props.labelStyle}>{this.props.label}</Text>
-              {CountryPicker.renderFlag2(this.props.cca2)}
+              {CountryPicker.renderFlag2(this.props.cca2,null, null, null, this.props.showCountryInterfaceCode)}
               <Image source={this.props.arrow_right} style={{height: 12, width: 12, marginLeft: 7, marginTop: 10}}/>
             </View>
           )}
