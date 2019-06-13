@@ -30,9 +30,8 @@ export default StyleSheet.create({
     marginLeft: '15%',
   },
   touchFlag: {
-  //  alignItems: 'center',
+    alignItems: 'center',
     flexDirection: 'row',
-    justifyContent: 'center',
     backgroundColor: 'transparent',
   },
   imgStyle: {
@@ -61,8 +60,8 @@ export default StyleSheet.create({
     marginHorizontal: 20,
     // justifyContent: 'center',
     alignItems: 'center',
-    borderBottomWidth: 1 / PixelRatio.get(),
-    borderColor: 'black',
+    borderBottomWidth: 0.5 / PixelRatio.get(),
+    borderColor: 'gray',
     paddingBottom: 4
   },
   itemCountryName: {
