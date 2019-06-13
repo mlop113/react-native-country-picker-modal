@@ -77,6 +77,7 @@ export default class CountryPicker extends Component {
     disabled: PropTypes.bool,
     filterPlaceholderTextColor: PropTypes.string,
     closeButtonImage: PropTypes.any,
+    tickIcon: PropTypes.any,
     transparent: PropTypes.bool,
     animationType: PropTypes.oneOf(['slide', 'fade', 'none']),
     flagType: PropTypes.oneOf(Object.values(FLAG_TYPES)),
@@ -354,13 +355,16 @@ export default class CountryPicker extends Component {
     const country = countries[cca2]
     return (
       <View style={styles.itemCountry}>
-          {CountryPicker.renderFlag(cca2)}
-          <Text style={[styles.countryName, {flex: 1}]} allowFontScaling={false}>
+          {/*{CountryPicker.renderFlag(cca2)}*/}
+          <Text style={[styles.countryName, {flex: 1}, cca2 === this.props.cca2 && {color: 'rgb(50,198,132)'}]} allowFontScaling={false}>
             {this.getCountryName(country)}
           </Text>
-        {this.props.showCallingCode &&
-        country.callingCode &&
-        <Text style={{fontSize: 16, paddingHorizontal: 3, fontWeight: 'bold'}}>{`+${country.callingCode}`}</Text>}
+        { cca2 === this.props.cca2 &&
+          <Image source={this.props.tickIcon} style={{height: 20, width: 20, tintColor: 'rgb(50,198,132)'}} resizeMode={'contain'}/>
+        }
+        {/*{this.props.showCallingCode &&*/}
+        {/*country.callingCode &&*/}
+        {/*<Text style={{fontSize: 16, paddingHorizontal: 3, fontWeight: 'bold'}}>{`+${country.callingCode}`}</Text>}*/}
       </View>
     )
   }
@@ -404,11 +408,11 @@ export default class CountryPicker extends Component {
             this.props.children
           ) : (
             <View
-              style={styles.touchFlag}
+              style={{alignItems: 'center', flexDirection: 'row'}}
             >
               <Text style={this.props.labelStyle}>{this.props.label}</Text>
-              {CountryPicker.renderFlag2(this.props.cca2,null, null, null, this.props.showCountryInterfaceCode)}
-              <Image source={this.props.arrow_right} style={{height: 12, width: 12, marginLeft: 7, marginTop: 10}}/>
+              <Text style={{alignSelf: 'center'}}>{this.getCountryName(countries[this.props.cca2])}</Text>
+              <Image source={this.props.arrow_right} style={{height: 12, width: 12, marginLeft: 5}}/>
             </View>
           )}
         </TouchableOpacity>
