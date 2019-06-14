@@ -7,7 +7,8 @@ export default StyleSheet.create({
   },
   modalContainer: {
  //   backgroundColor: '#001f33',
-    flex: 1,
+    justifyContent: 'center',
+    flex: 1
   },
   contentContainer: {
     flex: 1,
@@ -17,9 +18,10 @@ export default StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
+    backgroundColor: 'rgb(27,157,253)',
     alignItems: 'center',
-    borderBottomWidth: 0.5,
-    marginBottom: 7
+    marginBottom: 7,
+    paddingVertical: 10
   },
   input: {
     height: 48,
@@ -111,11 +113,12 @@ export default StyleSheet.create({
     height: 24,
     width: 24,
     resizeMode: 'contain',
-    tintColor: 'black',
+    tintColor: 'white',
+    marginHorizontal: 20
   },
   title: {
-    fontSize: getHeightPercent(3.7),
-    color: 'black',
+    fontSize: getHeightPercent(3.5),
+    color: 'white',
     fontWeight: 'bold'
   },
   itemCountryFlag: {
