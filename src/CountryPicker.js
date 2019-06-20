@@ -83,6 +83,7 @@ export default class CountryPicker extends Component {
     flagType: PropTypes.oneOf(Object.values(FLAG_TYPES)),
     hideAlphabetFilter: PropTypes.bool,
     renderFilter: PropTypes.func,
+    addSound: PropTypes.func,
     showCountryInterfaceCode: PropTypes.bool,
     showCallingCode: PropTypes.bool,
     filterOptions: PropTypes.object
@@ -401,7 +402,10 @@ export default class CountryPicker extends Component {
       <View style={styles.container}>
         <TouchableOpacity
           disabled={this.props.disabled}
-          onPress={() => this.setState({ modalVisible: true })}
+          onPress={() => {
+            this.setState({ modalVisible: true })
+            this.props.addSound()
+          }}
           activeOpacity={0.7}
         >
           {this.props.children ? (
@@ -411,7 +415,7 @@ export default class CountryPicker extends Component {
               style={{alignItems: 'center', flexDirection: 'row'}}
             >
               <Text style={this.props.labelStyle}>{this.props.label}</Text>
-              <Text style={{alignSelf: 'center'}}>{this.getCountryName(countries[this.props.cca2])}</Text>
+              <Text style={{alignSelf: 'center', fontSize: getHeightPercent(2), fontWeight: '600'}}>{this.getCountryName(countries[this.props.cca2])}</Text>
               <Image source={this.props.arrow_right} style={{height: 12, width: 12, marginLeft: 5}}/>
             </View>
           )}
@@ -428,7 +432,10 @@ export default class CountryPicker extends Component {
                 <CloseButton
                   image={this.props.closeButtonImage}
                   styles={[styles.closeButton, styles.closeButtonImage]}
-                  onPress={() => this.onClose()}
+                  onPress={() => {
+                    this.onClose()
+                    this.props.addSound()
+                  }}
                 />
               )}
                 <Text style={styles.title}>{this.props.title}</Text>
